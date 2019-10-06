@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: 'home.html'
 })
 export class HomePage {
-
+  
   posts:{
       ID      : number,
       title   : string,
@@ -24,12 +24,13 @@ export class HomePage {
   ) {}
 
     ionViewDidLoad(){
+        
         if(!this.platform.is('android')){
-            (<any> window).ga('send', 'pageview', '/signin');
+            (<any>window).ga('send', 'pageview', '/signin');
         }
         let loading = this.loadingCtrl.create();
         loading.present();
-        this.http.get('https://public-api.wordpress.com/rest/v1.1/sites/ionicjp.wordpress.com/posts/')
+        this.http.get('https://public-api.wordpress.com/rest/v1.1/sites/doboku-univ.com/posts/')
             .subscribe(data => {
                 this.posts = data['posts'];
                 loading.dismiss();
